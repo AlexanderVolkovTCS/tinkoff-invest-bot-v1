@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+    <changeSet id="tag version 1.0.0" author="Sergei Fedorov">
+        <tagDatabase tag="1.0.0"/>
+    </changeSet>
+
+    <changeSet id="01" author="Sergei Fedorov">
+        <comment>Первое добавление таблиц</comment>
+        <sqlFile path="sql/M-01.sql" relativeToChangelogFile="true"/>
+        <rollback>
+            <sqlFile path="rollback/R-01.sql" relativeToChangelogFile="true"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
