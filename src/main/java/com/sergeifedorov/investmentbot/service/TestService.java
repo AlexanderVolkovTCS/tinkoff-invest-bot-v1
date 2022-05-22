@@ -31,6 +31,7 @@ public class TestService {
      * Запуск теста стратегии по загруженной заранее истории свечей
      */
     public void testStrategy() {
+        log.info("Старт теста. На счет {} руб", 100000);
         clearDB();
 
         List<CandleHistory> candleHistories = candleHistoryRepo.findAll();
@@ -52,13 +53,14 @@ public class TestService {
             }
         }
         TradeTest result = tradeTestRepo.getById(testEntityId);
+        log.info("На старте на счету было {} руб", 100000);
         log.info("По завершению цикла сумма в рублях = {}", result.getMoney());
         log.info("По завершении цикла сумма акций в рублях = {}", result.getValue() * createBigDecimalForCandle(candleHistories.get(0)).doubleValue());
     }
 
     private void clearDB() {
         tradeTestRepo.deleteAll();
-        TradeTest tradeTest = tradeTestRepo.save(TradeTest.builder().money(1000.00).value(0.00).build());
+        TradeTest tradeTest = tradeTestRepo.save(TradeTest.builder().money(100000.00).value(0.00).build());
         testEntityId = tradeTest.getId();
     }
 
